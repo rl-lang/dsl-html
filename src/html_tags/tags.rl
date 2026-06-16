@@ -25,7 +25,12 @@ fn class_builder(arr[string] classes) -> string {
     return result
 }
 
+fn id_builder(string id) -> string {
+    return "id={}{}{}".format('"'.to_string(), id, '"'.to_string())
+}
+
 dec fn generic_tag = fn(string tag, arr[string] classes, string id, string body) -> string {
     dec string class = classes.class_builder()
+    dec string id = id.id_builder()
     return format("<{} {} {}>{}</{}>", tag, class, id, body, tag)
 }
