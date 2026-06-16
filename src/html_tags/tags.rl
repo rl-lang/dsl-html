@@ -43,3 +43,55 @@ dec fn generic_tag = fn(string tag, arr[string] classes, string id, string body)
     }
     return format("<{}{}{}>{}</{}>", tag, class, fid, fbody, tag)
 }
+
+dec fn p = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("p", classes, id, body)
+}
+
+dec fn div = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("div", classes, id, body)
+}
+
+dec fn h1 = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("h1", classes, id, body)
+}
+
+dec fn h2 = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("h2", classes, id, body)
+}
+
+dec fn span = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("span", classes, id, body)
+}
+
+dec fn a = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("a", classes, id, body)
+}
+
+dec fn body = fn(arr[string] classes, string id, string content) -> string {
+    return generic_tag("body", classes, id, content)
+}
+
+dec fn li = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("li", classes, id, body)
+}
+
+dec fn ul = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("ul", classes, id, body)
+}
+
+dec fn nav_tag = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("nav", classes, id, body)
+}
+
+dec fn section = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("section", classes, id, body)
+}
+
+dec fn footer_tag = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("footer", classes, id, body)
+}
+
+dec fn html = fn(arr[string] classes, string id, string body) -> string {
+    return generic_tag("html", classes, id, body)
+}
