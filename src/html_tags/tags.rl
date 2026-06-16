@@ -1,0 +1,31 @@
+get std::display::len
+get format, concat from std::str
+get std::array::arr_last
+get std::types::to_string
+
+// class builder transforms array of strings to 'class="class_1 class_2 ..."'
+fn class_builder(arr[string] classes) -> string {
+    // initializing the result
+    dec string result = format("class={}",'"'.to_string())
+    // enumurate makeshift
+    dec int max_index = classes.len() - 1
+    dec int current_index = 0
+    // looping throught the classes and adding 'class_1 ' if not last item
+    for class in classes {
+        if (current_index == max_index) {
+            // if last item then add it and '"' then break the loop
+            result = result.concat(class).concat('"'.to_string())
+            break
+        }
+        // add the item with space and increase the index
+        result = result.concat("{} ".format(class))
+        current_index += 1
+    }
+    // returns the contructed class
+    return result
+}
+
+dec fn generic_tag = fn(string tag, arr[string] classes, string id, string body) -> string {
+    dec string class = classes.class_builder()
+    return format("<{} {} {}>{}</{}>", tag, class, id, body, tag)
+}
