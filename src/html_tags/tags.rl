@@ -1,7 +1,6 @@
 get std::display::len
 get format, concat from std::str
-get std::array::arr_is_empty
-get to_bool, to_string from std::types
+get is_null, to_string from std::types
 
 // class builder transforms array of strings to 'class="class_1 class_2 ..."'
 fn class_builder(arr[string] classes) -> string {
@@ -31,15 +30,15 @@ fn id_builder(string id) -> string {
 
 dec fn generic_tag = fn(string tag, arr[string] classes, string id, string body) -> string {
     dec string class = ""
-    if (!classes.arr_is_empty()) {
+    if (!classes.is_null()) {
         class = classes.class_builder()
     }
     dec string fid = ""
-    if (id.to_bool()) {
+    if (!id.is_null()) {
         fid = id.id_builder()
     }
     dec string fbody = ""
-    if (body.to_bool()) {
+    if (!body.is_null()) {
         fbody = body
     }
     return format("<{}{}{}>{}</{}>", tag, class, fid, fbody, tag)
