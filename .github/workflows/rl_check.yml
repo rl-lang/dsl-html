@@ -16,8 +16,7 @@ jobs:
       matrix:
         file:
           - src/main.rl
-          - src/helper.rl
-          - src/utils.rl
+          - src/html_tags/tags.rl
     
     steps:
       - uses: actions/checkout@v4
