@@ -1,0 +1,31 @@
+name: Generate and Deploy Website
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install RL binary
+        shell: bash
+        run: |
+          VERSION="v0.1.3"
+          curl -L -o /usr/local/bin/rl "https://github.com/rl-lang/rl-lang/releases/download/${VERSION}/rl"
+          chmod +x /usr/local/bin/rl
+
+      - name: Generate index.html
+        run: rl dev > index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          include_files: index.html
